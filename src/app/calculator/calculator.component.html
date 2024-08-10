@@ -1,0 +1,55 @@
+<div class="container-sm">
+    <div class="jumbotron col-sm-4 p-2 m-0 bg-inverse">
+    <div class="calculator">
+        <h2>{{ title }}</h2>
+        <div class="row mb-3">
+            <label for="input">Input</label>
+            <div class="col text-center"> 
+                <input 
+                class="form-control-sm form-control text-right" 
+                type="text"  
+                [(ngModel)]="input"
+                name="input"
+                readonly> 
+            </div> </div>
+        <div class="output">
+            <label for="result">Result</label>
+            <input 
+            class="form-control-lg form-control text-right" 
+            type="text" 
+            [(ngModel)]="result"
+            name="result"
+            readonly>
+        </div>
+        <div class="buttons">
+            <div class="row mt-3 text-center">
+                <div class="col"><button class="form-control btn btn-lg btn-secondary" (click)="clear()">C</button></div>
+            </div>
+            <div class="row  mt-3">
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('7')">7</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('8')">8</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('9')">9</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="setOperation('/')">&#247;</button></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('4')">4</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('5')">5</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('6')">6</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="setOperation('*')">&#215;</button></div>
+            </div>
+            <div class="row  mt-3">
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('1')">1</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('2')">2</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('3')">3</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="setOperation('-')">&#8722;</button></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('0')">0</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="addSymbol('.')">.</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-danger" (click)="calculate()">&#61;</button></div>
+                <div class="col"><button class="form-control btn btn-lg btn-success" (click)="setOperation('+')">&#43;</button></div>   
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

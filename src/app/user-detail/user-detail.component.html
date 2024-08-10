@@ -1,0 +1,147 @@
+<form class="container needs-validation" name="form" #f="ngForm" (ngSubmit)="f.form.valid && navigateToIntern()" novalidate >
+  <h2>{{ title }}</h2>
+ 
+  <div class="row mb-3">
+    <div class="col-6">
+      <label for="name">Name</label>
+      <label class="text-danger">*</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        [(ngModel)]="userObj.name"
+        name="name" 
+        required 
+        maxlength="50" 
+        #nameField="ngModel"
+        [ngClass]="{'is-invalid' : f?.submitted && nameField.invalid}"
+        OnlyAlphabets
+        />
+      <div class="text-danger" *ngIf="f?.submitted && nameField.invalid"> Name is required </div>
+    </div>
+    <div class="col-6">
+      <label for="age">Age</label>
+      <label class="text-danger">*</label>
+      <input 
+      type="text" 
+      class="form-control"  
+      [(ngModel)]="userObj.age"  
+      name="age" 
+      required 
+      #ageField="ngModel"
+      [ngClass]="{'is-invalid' : f?.submitted && ageField.invalid}" 
+      OnlyNumbers
+      />
+      <div class="text-danger" *ngIf="f?.submitted && ageField.invalid"> Age is required </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-6">
+      <label for="icnumber">IC Number</label>
+      <label class="text-danger">*</label>
+      <input 
+      type="text" 
+      class="form-control"  
+      [(ngModel)]="userObj.icnumber"
+      name="icnumber" 
+      required 
+      minlength="12" 
+      maxlength="12" 
+      #icnumField="ngModel"
+      [ngClass]="{'is-invalid' : f?.submitted && icnumField.invalid}"
+      OnlyNumbers
+      />
+      <div class="text-danger" *ngIf="f?.submitted && icnumField.invalid"> IC Number is required </div>
+    </div>
+    <div class="col-6">
+      <label for="address">Address 1</label>
+      <label class="text-danger">*</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      [(ngModel)]="userObj.address" 
+      name="address" 
+      required 
+      #addressField="ngModel"
+      [ngClass]="{'is-invalid' : f?.submitted && addressField.invalid}"
+      />
+      <div class="text-danger" *ngIf="f?.submitted && addressField.invalid"> Address 1 is required </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-6">
+      <label for="address2">Address 2</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      [(ngModel)]="address2"
+      name="address2"
+      />
+    </div> 
+    <div class="col-6">
+      <label for="postcode">Postcode</label>
+      <label class="text-danger">*</label>
+     <input 
+     type="text" 
+     class="form-control" 
+     [(ngModel)]="userObj.postcode" 
+     name="postcode" 
+     required 
+     #postcodeField="ngModel"
+     [ngClass]="{'is-invalid' : f?.submitted && postcodeField.invalid}"
+     OnlyNumbers
+     >
+     <div class="text-danger" *ngIf="f?.submitted && postcodeField.invalid"> Postcode is required </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-6">
+      <label for="city">City</label>
+      <label class="text-danger">*</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      [(ngModel)]="userObj.city" 
+      name="city" 
+      required 
+      #cityField="ngModel"
+      [ngClass]="{'is-invalid' : f?.submitted && cityField.invalid}"
+      />
+      <div class="text-danger" *ngIf="f?.submitted && cityField.invalid"> City is required </div>
+    </div>
+    <div class="col-6">
+      <label for="gender">Gender</label>
+      <div class="col-6">
+        <div *ngFor="let gen of gender">
+          <input 
+          type="radio" 
+          [id]="gen.id" 
+          value="{{gen.value}}" 
+          [(ngModel)]="defaultGender" 
+          name="gender"
+          >
+          {{gen.value}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-6">
+      <label for="state">State</label>
+      <label class="text-danger">*</label>
+      <select 
+      class="form-control"  
+      [(ngModel)]="userObj.Value1"  
+      name="state" 
+      required 
+      #stateField="ngModel"
+      [ngClass]="{'is-invalid' : f?.submitted && stateField.invalid}"
+      > 
+        <option *ngFor="let option of States" [ngValue]="option" [selected]="option === 'all'">{{option}}</option>
+      </select>
+      <div class="text-danger" *ngIf="f?.submitted && stateField.invalid"> Select a state </div>
+  </div>
+  </div>
+  <div class="my-5 text-end">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
